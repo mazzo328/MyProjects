@@ -1,10 +1,9 @@
-name: Terraform AWS
+name: Terraform Plan AWS
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
 
 env:
   TF_VAR_subnet_id: ${{ secrets.TF_VAR_subnet_id }}
@@ -45,28 +44,3 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-
-  apply:
-    name: Terraform Apply
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    needs: plan
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Configure AWS credentials from OIDC
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::676206917781:role/GitHub_test_role
-          aws-region: us-east-1
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        run: terraform init -reconfigure
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
