@@ -22,7 +22,7 @@ resource "aws_instance" "demo" {
   key_name                    = var.key_name
 
   tags = {
-    Name = "github-ci-ec2-demo-VSchangeTest"
+    Name = "github-ci-ec2-demo"
   }
 }
 
