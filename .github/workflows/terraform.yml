@@ -22,8 +22,8 @@ jobs:
       - name: Configure AWS credentials from OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::<ACCOUNT_ID>:role/<GITHUB_ACTIONS_ROLE_NAME>
-          aws-region: eu-central-1
+          role-to-assume: arn:aws:iam::676206917781:role/GitHub_test_role
+          aws-region: us-east-1
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -53,8 +53,8 @@ jobs:
       - name: Configure AWS credentials from OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::<ACCOUNT_ID>:role/<GITHUB_ACTIONS_ROLE_NAME>
-          aws-region: eu-central-1
+          role-to-assume: arn:aws:iam::676206917781:role/GitHub_test_role
+          aws-region: us-east-1
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -63,4 +63,4 @@ jobs:
         run: terraform init -reconfigure
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var="aws_region=eu-central-1"
+        run: terraform apply -auto-approve -var="aws_region=us-east-1"
