@@ -28,4 +28,4 @@ jobs:
         run: terraform init -reconfigure
 
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve -var="aws_region=us-east-1"
+        run: terraform destroy -auto-approve
